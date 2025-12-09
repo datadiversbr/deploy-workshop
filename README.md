@@ -1,2 +1,2 @@
-# deploy-workshop
+# Deploy Workshop
 Material do workshop de deploy
