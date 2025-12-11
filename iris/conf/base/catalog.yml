@@ -1,0 +1,67 @@
+# Here you can define all your datasets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable_catalog.html
+
+iris_train_raw:
+  type: pandas.CSVDataset
+  filepath: ${globals:gcs_data_bucket}/01_raw/iris_train.csv
+  metadata:
+    kedro-viz:
+      layer: raw
+
+iris_predict_raw:
+  type: pandas.CSVDataset
+  filepath: ${globals:gcs_data_bucket}/01_raw/iris_predict.csv
+  metadata:
+    kedro-viz:
+      layer: raw
+
+master_table:
+  type: pandas.CSVDataset
+  filepath: ${globals:gcs_data_bucket}/05_model_input/iris_master_table
+  versioned: true
+  metadata:
+    kedro-viz:
+      layer: train
+
+test_classification_report:
+  type: json.JSONDataset
+  filepath: ${globals:gcs_data_bucket}/08_reporting/test_classification_report.json
+  save_args:
+    indent: 2
+  metadata:
+    kedro-viz:
+      layer: train
+
+feature_scaler_fitted:
+  type: pickle.PickleDataset
+  filepath: ${globals:gcs_data_bucket}/06_models/feature_scaler.joblib
+  backend: joblib
+
+target_encoder_fitted:
+  type: pickle.PickleDataset
+  filepath: ${globals:gcs_data_bucket}/06_models/target_encoder.joblib
+  backend: joblib
+
+
+trained_model:
+  type: pickle.PickleDataset
+  filepath: ${globals:gcs_data_bucket}/06_models/classification_model.joblib
+  backend: joblib
+
+predict_master_table:
+  type: pandas.CSVDataset
+  filepath: ${globals:gcs_data_bucket}/07_model_output/predict_master_table.csv
+  metadata:
+    kedro-viz:
+      layer: predict
+
+predicted:
+  type: pandas.CSVDataset
+  filepath: ${globals:gcs_data_bucket}/07_model_output/predicted_master_table.csv
+  save_args: 
+    index: true
+  metadata:
+    kedro-viz:
+      layer: predict

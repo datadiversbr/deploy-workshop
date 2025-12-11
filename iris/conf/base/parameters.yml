@@ -1,0 +1,7 @@
+columns:
+  target: Species
+  features: 
+    - SepalLengthCm
+    - SepalWidthCm
+    - PetalLengthCm
+    - PetalWidthCm

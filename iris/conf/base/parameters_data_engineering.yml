@@ -1,0 +1,8 @@
+# This is a boilerplate parameters config generated for pipeline 'data_engineering'
+# using Kedro 1.1.1.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/1.1.1/configuration/parameters.html
+split_params:
+  train_ratio: 0.8
+  test_ratio: 0.2
